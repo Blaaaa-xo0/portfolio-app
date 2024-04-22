@@ -26,7 +26,7 @@ const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
     return (
-        <nav className='sticky top-0 z-50'>
+        <nav className='fixed mx-auto top-0 left-0 right-0 z-50 '>
             <div className='flex flex-wrap items-center justify-between mx-auto px-7 py-5 bg-black bg-opacity-90'>
                 <Link href="/" className='text-3xl font-semibold '>Port<span className='text-red-600'>Folio</span> </Link>
 
