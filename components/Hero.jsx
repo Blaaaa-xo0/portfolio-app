@@ -53,8 +53,6 @@ function Hero() {
                                 2000,
                                 'Frontend Developer',
                                 2000,
-                                'Fullstack Developer',
-                                2000
                             ]}
                             wrapper='span'
                             speed={50}
