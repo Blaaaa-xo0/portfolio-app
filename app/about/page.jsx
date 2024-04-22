@@ -20,7 +20,7 @@ function AboutPage() {
 
                     {/* contenedor de experiencia */}
                     <div className="">
-                        experiencia laboral en ningún lado
+                        experiencia laboral y educación.
                     </div>
 
                 </div>
