@@ -15,10 +15,10 @@ const navLinks = [
         title: "Sobre Mi",
         href: "/about",
     },
-    {
-        title: "Contacto",
-        href: "/contact",
-    },
+    // {
+    //     title: "Contacto",
+    //     href: "/contact",
+    // },
 ];
 
 const Navbar = () => {
