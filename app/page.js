@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <main>
             
-            <div className="container mx-auto py-12 px-12">
+            <div className="container mx-auto py-36 px-12">
                 <Hero />
                 <Figures />
             </div>
