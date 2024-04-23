@@ -57,7 +57,10 @@ function AboutPage() {
 
 
     return (
-        <main>
+        <motion.main
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}  >
 
             {/* contenedor principal */}
             <div className="h-[100vh] overflow-y-scroll lg:flex" ref={containerRef}>
@@ -89,8 +92,8 @@ function AboutPage() {
                         <motion.div className=""
                             initial={{ opacity: 0.2, y: 0 }}
                             animate={{ opacity: 1, y: "10px" }}
-                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut"}}
-                            >
+                            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                        >
 
                             <div className="rounded-full border-4 w-12 border-red-600 hover:border-white transition-all duration-300 ease-in">
                                 <ArrowBigDown size={40} className='fill-red-600 text-red-600 hover:fill-white hover:text-white transition-all duration-300 ease-in' />
@@ -103,7 +106,7 @@ function AboutPage() {
                     {/* contenedor de habilidades */}
                     <div className=" flex flex-col gap-12 justify-center" ref={skillRef}>
 
-                        <motion.h1 
+                        <motion.h1
                             initial={{ x: "-300px" }}
                             animate={isSkillRefInView ? { x: 0 } : {}}
                             transition={{ delay: 0.2 }}
@@ -113,7 +116,7 @@ function AboutPage() {
                         </motion.h1>
 
                         {/* lista de habilidades */}
-                        <motion.div 
+                        <motion.div
                             className=" flex gap-4 flex-wrap"
                             initial={{ x: "-300px" }}
                             animate={isSkillRefInView ? { x: 0 } : {}}
@@ -162,7 +165,7 @@ function AboutPage() {
                         >
                             {jobs.map((job, index) => (
                                 <div key={index} className="flex justify-between h-48">
-                                    
+
                                     {/* left */}
                                     <div className="w-1/3">
                                         {index % 2 == 0 && (
@@ -225,7 +228,7 @@ function AboutPage() {
                     <Brain scrollYProgress={scrollYProgress} />
                 </div>
             </div>
-        </main>
+        </motion.main>
     );
 }
 
