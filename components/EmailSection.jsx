@@ -2,9 +2,22 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion';
+import { ValidationError, useForm } from '@formspree/react';
+
 
 
 const EmailSection = () => {
+
+    const [state, handleSubmit] = useForm("xwkgyrep")
+
+    if (state.succeeded) {
+        return (
+            <div className='flex items-center justify-center min-h-[80vh] px-4'>
+                <p className='text-4xl'>Gracias por tu mensaje. ¡Te responderé pronto!</p>
+            </div>
+        )
+    }
+
     return (
         <motion.div 
             className='grid md:grid-cols-2 my-12 md:my-12 py-24 px-12 md:px-24 gap-4 relative'
@@ -39,8 +52,28 @@ const EmailSection = () => {
                 </div>
             </div>
 
-            <div>
-                <form className='flex flex-col gap-6'>
+            {/* formulario */}
+            <div className='z-10'>
+                <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+
+                    {/* nombre */}
+                    <div>
+                        <label htmlFor="name"
+                            className='text-sm block mb-1 font-medium'
+                        >Su nombre</label>
+                        <input 
+                            type="text"
+                            name="name"
+                            id='name'
+                            required
+                            placeholder='Su nombre!'
+                            className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 '
+                        />
+                        <ValidationError
+                            prefix="Name"
+                            field="name"
+                            errors={state.errors} />
+                    </div>
 
                     {/* email */}
                     <div>
@@ -54,13 +87,17 @@ const EmailSection = () => {
                             placeholder='example@gmail.com'
                             className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 '
                         />
+                        <ValidationError
+                            prefix="Email"
+                            field="email"
+                            errors={state.errors} />
                     </div>
 
                     {/* asunto */}
                     <div>
                         <label htmlFor="subject"
                             className='text-sm block mb-1 font-medium'
-                        >Su Asunto</label>
+                        >Asunto</label>
                         <input
                             type="text"
                             name="subject"
@@ -69,13 +106,17 @@ const EmailSection = () => {
                             placeholder='Solo di hola!'
                             className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 '
                         />
+                        <ValidationError
+                            prefix="Subject"
+                            field="subject"
+                            errors={state.errors} />
                     </div>
 
                     {/* mensaje */}
                     <div>
                         <label htmlFor="message"
                             className='text-sm block mb-1 font-medium'
-                        >Su Mensaje</label>
+                        >Su mensaje</label>
                         <textarea
                             name="message"
                             id='message'
@@ -83,9 +124,15 @@ const EmailSection = () => {
                             placeholder='Hola Brayan, me gustaría...'
                             className='bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5 '
                         ></textarea>
+                        <ValidationError
+                            prefix="Message"
+                            field="message"
+                            errors={state.errors} />
                     </div>
 
-                    <button className='mt-4 bg-[#ff2323] hover:bg-[#500000] px-2.5 py-2 rounded-lg transition-all duration-300 ease-in'>
+                    <button 
+                        disabled={state.submitting}
+                        className='mt-4 bg-[#ff2323] hover:bg-[#500000] px-2.5 py-2 rounded-lg transition-all duration-300 ease-in'>
                         Enviar
                     </button>
 
