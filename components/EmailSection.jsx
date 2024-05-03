@@ -12,18 +12,22 @@ const EmailSection = () => {
 
     if (state.succeeded) {
         return (
-            <div className='flex items-center justify-center min-h-[80vh] px-4'>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2 }}
+                className='flex items-center justify-center min-h-[80vh] px-4'>
                 <p className='text-4xl'>Gracias por tu mensaje. ¡Te responderé pronto!</p>
-            </div>
+            </motion.div >
         )
     }
 
     return (
-        <motion.div 
+        <motion.div
             className='grid md:grid-cols-2 my-12 md:my-12 py-24 px-12 md:px-24 gap-4 relative'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}    
+            transition={{ duration: 2 }}
         >
 
             {/* forma */}
@@ -61,7 +65,7 @@ const EmailSection = () => {
                         <label htmlFor="name"
                             className='text-sm block mb-1 font-medium'
                         >Su nombre</label>
-                        <input 
+                        <input
                             type="text"
                             name="name"
                             id='name'
@@ -130,7 +134,7 @@ const EmailSection = () => {
                             errors={state.errors} />
                     </div>
 
-                    <button 
+                    <button
                         disabled={state.submitting}
                         className='mt-4 bg-[#ff2323] hover:bg-[#500000] px-2.5 py-2 rounded-lg transition-all duration-300 ease-in'>
                         Enviar
